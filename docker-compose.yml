@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  surrealdb:
+    image: surrealdb/surrealdb:latest
+    ports:
+      - "8000:8000"
+    command: start --log trace --user root --pass root memory
+    
+  ipfs:
+    image: ipfs/go-ipfs:latest
+    ports:
+      - "4001:4001"
+      - "5001:5001"
+      - "8080:8080"
+    volumes:
+      - ipfs_data:/data/ipfs
+      
+  decentik:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - SURREAL_URL=ws://surrealdb:8000
+      - JWT_SECRET=your-secret-key-change-in-production
+      - IPFS_GATEWAY=http://ipfs:5001
+      - LIVEPEER_API_KEY=${LIVEPEER_API_KEY}
+      - AT_PDS_URL=https://bsky.social
+      - AT_DID=${AT_DID}
+    depends_on:
+      - surrealdb
+      - ipfs
+
+volumes:
+  ipfs_data:

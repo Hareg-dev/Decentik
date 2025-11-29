@@ -1,0 +1,14 @@
+[package]
+name = "dtt-api"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+dtt-core = { path = "../dtt-core" }
+dtt-infra = { path = "../dtt-infra" }
+tokio = { workspace = true }
+serde = { workspace = true }
+uuid = { workspace = true }
+axum = { workspace = true }
+jsonwebtoken = { workspace = true }
+bcrypt = { workspace = true }
