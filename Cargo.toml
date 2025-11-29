@@ -2,7 +2,8 @@
 members = [
     "crates/dtt-core",
     "crates/dtt-infra", 
-    "crates/dtt-api"
+    "crates/dtt-api",
+    "crates/dtt-ui"
 ]
 resolver = "2"
 
@@ -20,3 +21,4 @@ jsonwebtoken = "9.0"
 bcrypt = "0.15"
 chrono = { version = "0.4", features = ["serde"] }
 rand = "0.8"
+async-trait = "0.1"

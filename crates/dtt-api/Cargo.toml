@@ -6,9 +6,12 @@ edition = "2021"
 [dependencies]
 dtt-core = { path = "../dtt-core" }
 dtt-infra = { path = "../dtt-infra" }
+dtt-ui = { path = "../dtt-ui" }
 tokio = { workspace = true }
 serde = { workspace = true }
 uuid = { workspace = true }
 axum = { workspace = true }
 jsonwebtoken = { workspace = true }
 bcrypt = { workspace = true }
+tower = "0.4"
+tower-http = { version = "0.5", features = ["fs", "cors"] }
